@@ -36,18 +36,22 @@ Programmer : Arachmadi Putra (https://me.cimosoft.com)"""
 
 class GoTranX:
 
+    def setmtt(self, _va):
+        self._wge.configure(state='normal')
+        self._wge.delete(1.0, "end")
+        self._wge.insert("end", _va)
+        self._wge.configure(state='disabled')
+
     def trans(self):
         try:
             _va = Translator()
             _vb = self._wgd.get("1.0", "end-1c")
             if len(_vb) != 0:
-                ret = _va.translate(
+                _vc = _va.translate(
                     str(_vb), src=_ca[self._wgb.current()], dest=_ca[self._wgc.current()]).text
-            self._wge.configure(state='normal')
-            self._wge.insert("1.0", ret)
-            self._wge.configure(state='disabled')
-        except Exception as _vc:
-            messagebox.showwarning("Ouch !", _vc)
+            self.setmtt(_va=_vc)
+        except Exception as _vd:
+            messagebox.showwarning("Ouch !", _vd)
 
     def __init__(self, master=None):
         self._wga = ttk.Frame(master)
@@ -82,8 +86,8 @@ class GoTranX:
         self.mainwindow = self._wga
 
         _va = list()
-        for data in _cb:
-            _va.append(data)
+        for _vb in _cb:
+            _va.append(_vb)
         self._wgb['values'] = _va
         self._wgc['values'] = _va
         self._wgb.current(11)

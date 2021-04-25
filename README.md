@@ -13,4 +13,4 @@ Before you can run GoTranX, make sure you have install those modules using packa
 
 ## Usage
 
-Run ` gotranx.py ` from your terminal or cmd 
+Run ` gotranx.py ` from your terminal or cmd
